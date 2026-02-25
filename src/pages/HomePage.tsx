@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HomePage.css';
-import { ArrowRightOutlined, EnterOutlined, RightOutlined, ToolOutlined, WindowsOutlined, ZoomInOutlined } from '@ant-design/icons';
+import { ArrowRightOutlined, EnterOutlined, ToolOutlined, WindowsOutlined, ZoomInOutlined } from '@ant-design/icons';
 
 const HomePage: React.FC = () => {
   const [activeSolutionId, setActiveSolutionId] = useState(solutions[0].id);
