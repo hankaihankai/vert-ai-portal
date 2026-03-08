@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import MessageBoard from '../MessageBoard';
 import './ProductFlowword.css';
 
 const ProductFlowwork: React.FC = () => {
   const { t } = useTranslation();
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
 
   const features = [
     t('workflow.feature1'),
@@ -35,9 +37,14 @@ const ProductFlowwork: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button type="button" className="product-flowwork__cta">
+          <button
+            type="button"
+            className="product-flowwork__cta"
+            onClick={() => setIsMessageOpen(true)}
+          >
             {t('workflow.cta')} →
           </button>
+          <MessageBoard open={isMessageOpen} onClose={() => setIsMessageOpen(false)} />
         </div>
 
         <div className="product-flowwork__right">

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import MessageBoard from '../MessageBoard';
 import './AboutMainImg.css';
 
 const bgImg = `${import.meta.env.BASE_URL}images/home/home-back.png`;
 
 const AboutMainImg: React.FC = () => {
   const { t } = useTranslation();
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
 
   return (
     <section className="about-main-img" style={{ backgroundImage: `url(${bgImg})` }}>
@@ -13,9 +15,14 @@ const AboutMainImg: React.FC = () => {
       <div className="about-main-img__content">
         <h1 className="about-main-img__title">{t('aboutMain.title')}</h1>
         <p className="about-main-img__desc">{t('aboutMain.description')}</p>
-        <button type="button" className="about-main-img__cta">
+        <button
+          type="button"
+          className="about-main-img__cta"
+          onClick={() => setIsMessageOpen(true)}
+        >
           {t('aboutMain.cta')} →
         </button>
+        <MessageBoard open={isMessageOpen} onClose={() => setIsMessageOpen(false)} />
       </div>
     </section>
   );

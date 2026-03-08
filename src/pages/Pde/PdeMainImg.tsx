@@ -1,10 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import MessageBoard from '../MessageBoard';
 import { getAssetPath } from '../../utils/path';
 import './PdeMainImg.css';
 
 const PdeMainImg: React.FC = () => {
-  const navigate = useNavigate();
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
 
   return (
     <section
@@ -22,10 +22,11 @@ const PdeMainImg: React.FC = () => {
         <button
           type="button"
           className="pde-main-img__btn"
-          onClick={() => navigate('/products')}
+          onClick={() => setIsMessageOpen(true)}
         >
           立即开始 →
         </button>
+        <MessageBoard open={isMessageOpen} onClose={() => setIsMessageOpen(false)} />
       </div>
     </section>
   );

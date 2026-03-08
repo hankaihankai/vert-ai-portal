@@ -1,10 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import MessageBoard from '../MessageBoard';
 import { getAssetPath } from '../../utils/path';
 import './PdeCaseStudies.css';
 
 const PdeCaseStudies: React.FC = () => {
-  const navigate = useNavigate();
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
 
   return (
     <section className="pde-case-studies">
@@ -36,10 +36,11 @@ const PdeCaseStudies: React.FC = () => {
             <button
               type="button"
               className="pde-case-studies__btn"
-              onClick={() => navigate('/about')}
+              onClick={() => setIsMessageOpen(true)}
             >
               成为合作伙伴 →
             </button>
+            <MessageBoard open={isMessageOpen} onClose={() => setIsMessageOpen(false)} />
           </div>
           <div className="pde-case-studies__right">
             <img
